@@ -153,21 +153,25 @@ class DS3231:
 
 
 from machine import Pin, I2C
-from utime import localtime,sleep
+from utime import sleep
+from time import localtime
 
 i2c = I2C(0,scl=Pin(17),sda=Pin(16))
 rtc = DS3231(i2c)
 
+
 print(rtc.getTime())
-rtc.disableAlarm()
+
+# rtc.disableAlarm()
 # print(rtc.checkAlarm())
 # rtc.setTimer(1)
 # print(rtc.checkAlarm())
-# 
-# while True:
-#     print(rtc.getTime())
-#     print(rtc.checkAlarm())
-#     sleep(1)
+
+while True:
+    print(localtime())
+    print(rtc.getTime())
+    print(rtc.checkAlarm())
+    sleep(1)
 
 
 
